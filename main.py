@@ -7,10 +7,11 @@ class Query(graphene.ObjectType):
     def resolve_hello(self, info, name):
         return 'Hello ' + name
 
-    def main():
-        schema = graphene.Schema(query=Query)
-        result = schema.execute({'hello'})
-        print(result.data['hello'])
+
+def main():
+    schema = graphene.Schema(query=Query)
+    result = schema.execute({'hello'})
+    print(result.data['hello'])
 
 
 if __name__ == '__main__':
