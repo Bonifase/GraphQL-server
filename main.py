@@ -1,4 +1,6 @@
 import graphene
+from flask import Flask
+app = Flask(__name__)
 
 
 class Query(graphene.ObjectType):
@@ -8,10 +10,12 @@ class Query(graphene.ObjectType):
         return 'Hello ' + name
 
 
+@app.route("/")
 def main():
     schema = graphene.Schema(query=Query)
     result = schema.execute({'hello'})
     print(result.data['hello'])
+    return result.data['hello']
 
 
 if __name__ == '__main__':
