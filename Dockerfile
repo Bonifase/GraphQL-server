@@ -1,4 +1,3 @@
-# Dockerfile
 # Using the official Python 3.7 image
 FROM python:3.7
 # Set the Work Directory
