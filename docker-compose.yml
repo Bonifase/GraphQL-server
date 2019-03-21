@@ -1,5 +1,6 @@
 version: "3"
 services:
+
   server:
     container_name: flask
     build: .
@@ -11,9 +12,10 @@ services:
       DB_USERNAME: username
       DB_PASSWORD: password
       DB_DATABASE: database_name
-      DB_HOST: localhost
+      DB_HOST: database
     links:
       - database
+
   database:
     container_name: database
     image: mysql:5.7
@@ -29,5 +31,6 @@ services:
       - '3306'
     volumes:
       - flask-db:/var/lib/mysql
+
 volumes:
   flask-db:
