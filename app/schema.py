@@ -1,11 +1,16 @@
-from graphene import ObjectType, String
-class ExampleQuery(ObjectType):
-    hello = String()
-    
-    def resolve_hello(self, info):
-        return "Hello"
+from graphene import ObjectType, Schema, String
 
-class RootQuery(ExampleQuery, ObjectType):
+from app.modules.users.queries import UserQuery
+from app.modules.users.mutations import UserMutation
+
+
+class RootQuery(UserQuery, ObjectType):
     pass
 
-schema = Schema(query=RootQuery)
+
+
+class RootMutation(UserMutation, ObjectType):
+    pass
+
+
+schema = Schema(query=RootQuery, mutation=RootMutation)
